@@ -13,7 +13,7 @@ import GameOverScreen from './screens/GameOverScreen'
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    'open-sans':require('./assets/font/OpenSans-Bold.ttf'),
+    'open-sans':require('./assets/font/OpenSans-Regular.ttf'),
     'open-sans-bold':require('./assets/font/OpenSans-Bold.ttf')
   })
 }
