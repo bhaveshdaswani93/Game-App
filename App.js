@@ -46,6 +46,7 @@ export default function App() {
   
 
   let renderScreen = <StartGameScreen onSelectNumber={numSelectedHandler} />
+  // let renderScreen = <GameOverScreen rounds={1} userNumber={1} onResetGame={resetGameHandler} />
   if (selectedNumber && round <= 0) {
     renderScreen = <GameScreen onGameEnd={incRoundHandler} userChoice={selectedNumber} />
   } else if (round > 0) {
