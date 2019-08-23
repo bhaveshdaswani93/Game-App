@@ -13,15 +13,15 @@ import GameOverScreen from './screens/GameOverScreen'
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    'open-sans':require('./assets/font/OpenSans-Regular.ttf'),
-    'open-sans-bold':require('./assets/font/OpenSans-Bold.ttf')
+    'open-sans': require('./assets/font/OpenSans-Regular.ttf'),
+    'open-sans-bold': require('./assets/font/OpenSans-Bold.ttf')
   })
 }
 
 export default function App() {
   const [selectedNumber, setSelectedNumber] = useState()
   const [round, setRound] = useState(0)
-  const [dataLoaded,setDataLoaded] = useState(false)
+  const [dataLoaded, setDataLoaded] = useState(false)
 
   const numSelectedHandler = (choosenNumber) => {
     setSelectedNumber(choosenNumber)
@@ -36,14 +36,14 @@ export default function App() {
     setRound(0)
   }
 
-  if(!dataLoaded) {
-    return <AppLoading 
-    startAsync={fetchFonts}
-    onFinish={()=>{setDataLoaded(true)}}
-    onError={(err)=>{console.log(err)}}
-  />
+  if (!dataLoaded) {
+    return <AppLoading
+      startAsync={fetchFonts}
+      onFinish={() => { setDataLoaded(true) }}
+      onError={(err) => { console.log(err) }}
+    />
   }
-  
+
 
   let renderScreen = <StartGameScreen onSelectNumber={numSelectedHandler} />
   // let renderScreen = <GameOverScreen rounds={1} userNumber={1} onResetGame={resetGameHandler} />
@@ -53,10 +53,11 @@ export default function App() {
     renderScreen = <GameOverScreen rounds={round} userNumber={selectedNumber} onResetGame={resetGameHandler} />
   }
   return (
-    <View style={styles.screen}>
-      <Header title='Guess A Number' />
-      {renderScreen}
-    </View>
+   
+      <View style={styles.screen}>
+        <Header title='Guess A Number' />
+        {renderScreen}
+      </View>
   );
 }
 

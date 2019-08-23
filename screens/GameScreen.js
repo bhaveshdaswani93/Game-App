@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View, StyleSheet, Text, Button, Alert, ScrollView, FlatList } from 'react-native'
+import { View, StyleSheet, Text, Alert, FlatList, Dimensions } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
 import NumberContainer from '../components/NumberContainer'
@@ -41,6 +41,11 @@ const GameScreen = props => {
     console.log('max', guessMax.current);
     console.log('min', guessMin.current);
 
+    let numberContainerStyle =  styles.numberContainerBig;
+    if(Dimensions.get('window').height < 600) {
+        numberContainerStyle = styles.numberContainerSmall
+    }
+
 
     useEffect(() => {
         if (props.userChoice === guessNumber) {
@@ -74,7 +79,7 @@ const GameScreen = props => {
     return (
         <View style={styles.screen}>
             <Text>Opponent Guess</Text>
-            <NumberContainer>{guessNumber}</NumberContainer>
+            <NumberContainer style={numberContainerStyle}>{guessNumber}</NumberContainer>
             <Card style={styles.buttonContainer}>
                 <MainButton onPress={guessAnotherNumber.bind(this, 'lower')}>
                     <Ionicons name="md-remove" size={24} color="white" />
@@ -122,9 +127,16 @@ const styles = StyleSheet.create({
         flexGrow: 1
     },
     listContainer: {
-        width: '60%',
+        width: Dimensions.get('window').width > 350?'60%':'80%',
         flex: 1
+    },
+    numberContainerBig:{
+        marginVertical:40
+    },
+    numberContainerSmall:{
+        marginVertical:5
     }
+
 })
 
 export default GameScreen
