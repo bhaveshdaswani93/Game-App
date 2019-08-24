@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,Platform } from 'react-native';
 
 import Colors from '../constants/colors'
 import DefaultStyle from '../constants/default-styles'
@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         height:90,
-        backgroundColor:Colors.primary,
+        backgroundColor:Platform.OS === 'android'?Colors.primary:'white',
         paddingTop:36
         // width:'100%'  
     },
     headerTitle:{
         fontSize:18,
-        color:'black'
+        color:Platform.OS === 'android'?'white':'black'
     }
     
 })

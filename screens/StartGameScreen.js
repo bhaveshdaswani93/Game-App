@@ -14,6 +14,7 @@ import MainButton from '../components/MainButton'
 
 
 const StartGameScreen = props => {
+    // ScreenOrientation.getOrientationAsync().then(orientation=>console.log('Oreientation:',orientation))
     const [inputNumber, setInputNumber] = useState('')
     const [selectedNumber, setSelectedNumber] = useState()
     const [confirmed, setConfirmed] = useState(false)
@@ -64,6 +65,7 @@ const StartGameScreen = props => {
                     {selectedNumber}
                 </NumberContainer>
                 <MainButton color={Colors.primary} onPress={() => props.onSelectNumber(selectedNumber)} > START GAME </MainButton>
+                {/* <Button  title='START GAME'  color={Colors.primary}  onPress={() => props.onSelectNumber(selectedNumber)}  /> */}
             </Card>
         )
     }
